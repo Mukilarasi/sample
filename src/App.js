@@ -1,4 +1,6 @@
+import { useState } from "react";
 import "./App.css";
+
 
 export default function App() {
   let movies = [
@@ -38,12 +40,36 @@ export default function App() {
     <div className="container">
       {movies.map(({ movie, poster, rating, summary }) => (
         <Sample name={movie} url={poster} star={rating} sum={summary} />
+        
       ))}
+      {/* <Counter/> */}
     </div>
   );
 }
+function Counter(){
+  // let like=0;
+  // console.log(like)
+  const[like, setLike]=useState(10);
+  const[dislike,setDislike]=useState(10);
+  return(
+    <div className="btn"><button onClick={()=>setLike(like + 1)}>👍{like}</button>
+    <button onClick={()=>setDislike(dislike+1)}>👎{dislike}</button>
+    {/* <h3><button onClick={()=>setShow(!show)}className="sum">summary:</button></h3> */}
+         
+    
+    {/* <h3>{like}</h3>
+    <h3>{like}</h3>
+    <h3>{like}</h3>
+    <h3>{like}</h3> */}
+    </div>
+  )
+}
+// function Clicked({
+
+// })
 function Sample({ name, url, star, sum }) {
   const styles ={color: star>=8.5? "teal":"red"};
+  const[show,setShow]=useState(false);
   return (
     <div>
         <div className="card">
@@ -51,11 +77,13 @@ function Sample({ name, url, star, sum }) {
         <div className="movie-details">
           <h3><span className="mo">movie:</span>{name}</h3>
           <h3 style={styles}><span className="rat">rating:</span> {star}</h3>
-          <h3><span className="mo">summary:</span>{sum}</h3>
+          <Counter/>
+          <button onClick={()=>setShow(!show)}>Toggle</button>
+         {show?<h3>{sum}</h3>:null}
+          
           </div>
         </div>
       </div>
-
   );
 }
 // export default App;

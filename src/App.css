@@ -10,7 +10,9 @@
 .mo {
   color: black;
 }
-
+/* .sum{
+  color: red;
+} */
 .movie-details {
   width: 238px;
   margin-left: 5rem;
@@ -25,16 +27,20 @@ img {
 
 h3 {
   font-size: 1rem;
-  color: crimson;
+  color: crimson;;
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  height: 577px;
+  height: 627px;
   width: 371px;
   box-shadow: 1px 1px 6px 1px;
   margin-left: 2rem;
   margin-top: 2rem;
   background-color:skyblue;
+}
+.btn{
+  display:flex;
+  gap:5px;
 }
