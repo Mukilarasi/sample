@@ -78,7 +78,7 @@ function Sample({ name, url, star, sum }) {
           <h3><span className="mo">movie:</span>{name}</h3>
           <h3 style={styles}><span className="rat">rating:</span> {star}</h3>
           <Counter/>
-          <button onClick={()=>setShow(!show)}>Toggle</button>
+          <button onClick={()=>setShow(!show)}>Summary</button>
          {show?<h3>{sum}</h3>:null}
           
           </div>
