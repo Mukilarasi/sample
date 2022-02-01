@@ -6,6 +6,9 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+.movie{
+  text-align: center;
+}
 
 .mo {
   color: black;
@@ -30,7 +33,7 @@ h3 {
 .card {
   display: flex;
   flex-direction: column;
-  height: 650px;
+  /* height: 680px; */
   width: 371px;
   box-shadow: 1px 1px 6px 1px;
   margin-left: 2rem;
@@ -47,5 +50,7 @@ h3 {
 }
 .adddata{
   display:flex;
+  flex-direction: column;
   gap:7px;
+  align-items: center;
 }

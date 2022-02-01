@@ -1,13 +1,11 @@
 import { useState } from "react";
 import "./App.css";
 import Button from '@mui/material/Button';
-// import Rating from '@material-ui/lab/Rating';
-// import TextField from '@mui/material/TextField';
 import TextField from '@mui/material/TextField';
-import Rating from '@mui/material/Rating';
-import Box from '@mui/material/Box';
-// import TextField from '@material-ui/core/TextField';
-//  import Typography from '@material-ui/core/Typography';
+import { Switch, Route, Link } from "react-router-dom";
+import { AddColor } from "./AddColor";
+import { Home } from "./Home";
+import { Sample } from "./Sample";
 
 export default function App() {
   let movies = [
@@ -19,8 +17,7 @@ export default function App() {
       rating: "9.5",
       summary: "A pregnant woman from a primitive tribal community, searches desperately for her husband, who is missing from police custody. A High Court advocate rises in support to find her husband and seek justice for them. "
     },
-    {
-      
+    {     
       movie: "Doctor",
       poster: "https://www.sify.com/uploads/Doctor_6_vkgob2afjjahj.jpeg",
       rating: " 8.5",
@@ -51,25 +48,49 @@ export default function App() {
    const [summary,setSummary]=useState("");
    const [movieList,setMovieList]=useState(movies);
  return (
-  <div className="data">
-    <h1>Movie details</h1>
+   <div>
+  <li>
+          {/* Change the url bar but dont refresh */}
+          <Link to="/home">home</Link>
+          </li>
+          <li>  
+            <Link to="/MovieList">MovieList</Link> 
+        </li>
+        <li>
+          <Link to="/addcolor">AddColor</Link>
+        </li>
+        <Switch>
+
+<Route path="/Movielist">
+<div className="data">
+    <h1 className="movie">Movie details</h1>
     <div className="adddata">
     <TextField value={movie}  label="movie name" onChange={(val)=>setMovie(val.target.value)}/> <br/>
     <TextField value={poster}   label="poster"  onChange={(val)=>setPoster(val.target.value)}/> <br/>
      <TextField value={rating}   label="ratings"  onChange={(val)=>setRating(val.target.value)}/> <br/> 
         <TextField value={summary}  label="summary" onChange={(val)=>setSummary(val.target.value)}/> <br/>
       
-        <Button variant="contained"onClick={()=>{
+        <Button variant="contained" onClick={()=>{
         const newMovie ={
           movie: movie,
           poster:poster,
           rating:rating,
           summary:summary,
         };
-         setMovieList([...movieList,newMovie])
-      }}>Add Movie
+         setMovieList([...movieList,newMovie]);
+        }
+      }
+      >
+      Add Movie
+
         </Button>
+        <br/>
+     
         </div>
+  {/* <Routing/> */}
+{/* <AddColor/> */}
+  
+       
       
     <div className="container">
       {movieList.map(({ movie, poster, rating, summary }) => (
@@ -78,49 +99,19 @@ export default function App() {
       {/* <GetData/> */}
       {/* <Counter/> */}
     </div>
+
     </div>
-  );
-}
-function Counter(){
-  // let like=0;
-  // console.log(like)
-  const[like, setLike]=useState(10);
-  const[dislike,setDislike]=useState(10);
-  return(
-    <div className="btn"><Button variant="contained" onClick={()=>setLike(like + 1)}>👍{like}</Button>
-    {/* <button onClick={()=>setDislike(dislike+1)}>👎{dislike}</button> */}
-    <Button variant="contained" onClick={()=>setDislike(dislike+1)}>👎{dislike}</Button>
-       {/* <h3>{like}</h3>
-    <h3>{like}</h3>
-    <h3>{like}</h3>
-    <h3>{like}</h3> */}
-    </div>
-  )
-} 
+</Route>
+<Route path="/home">
+  <Home />
+  </Route>
+ 
+<Route path="/addcolor">
+  <AddColor/>
+</Route>
 
-function Sample({ name, url, star, sum }) {
-  // conditional styling
-  const styles ={color: star>=8.5? "teal":"red"};
-  const[show,setShow]=useState(false);
-  // const toggler =()=>{
-  //   show ? setShow(false):setShow(true);
-  // }
-
-  return (
-    <div>
-        <div className="card">
-        <img src={url} alt={name} />
-        <div className="movie-details">
-          <h3><span className="mo">movie:</span>{name}</h3>
-      <Rating name="customized-10" defaultValue={2} max={10} />
-          <Counter/>
-           <Button variant="contained" onClick={()=>setShow(!show)}>Summary</Button>
-           {
-           show?<h3>{sum}</h3>:false
-            }
-
-          </div>
-        </div>
-      </div>     
+</Switch>
+ 
+</div>
   );
 }
