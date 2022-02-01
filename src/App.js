@@ -49,16 +49,26 @@ export default function App() {
    const [movieList,setMovieList]=useState(movies);
  return (
    <div>
+     <ul className="list">
   <li>
           {/* Change the url bar but dont refresh */}
-          <Link to="/home">home</Link>
+        <h1> 
+           <Link to="/home">Home</Link>
+        </h1>
+
           </li>
-          <li>  
+           
+          <li> 
+          <h1> 
             <Link to="/MovieList">MovieList</Link> 
+            </h1>
         </li>
         <li>
+        <h1> 
           <Link to="/addcolor">AddColor</Link>
+          </h1>
         </li>
+        </ul>
         <Switch>
 
 <Route path="/Movielist">

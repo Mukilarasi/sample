@@ -19,8 +19,8 @@ export function AddColor() {
         placeholder="Enter a color"
         style={styles}
         onChange={(event) => setColor(event.target.value)} />
-      <button onClick={() => setColorList([...colorList, color])}>AddColor</button>
       {colorList.map((clr) => (<ColorBox cool={clr} />))}
+      <button onClick={() => setColorList([...colorList, color])}>AddColor</button>
 
     </div>
   );
