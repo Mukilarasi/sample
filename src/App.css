@@ -2,9 +2,10 @@
   display: flex;
   margin-top: 1rem;
   width: 100%;
-  height: 1400px;
+  height: min-content;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  margin-bottom: 2rem;
+  justify-content:flex-start;
 }
 .movie{
   text-align: center;
@@ -18,10 +19,10 @@
   margin-left: 5rem;
 }
 
-img {
-  height: 17.4rem;
-  width: 14rem;
-  margin-left: 4.5rem;
+.img-cls {
+  height: 25.4rem;
+  width: 21rem;
+  /* margin-left: 4.5rem; */
   margin-top: 1rem;
 }
 
@@ -35,7 +36,6 @@ h3 {
 .card {
   display: flex;
   flex-direction: column;
-  /* height: 680px; */
   width: 371px;
   box-shadow: 1px 1px 6px 1px;
   margin-left: 2rem;
@@ -55,4 +55,23 @@ h3 {
   flex-direction: column;
   gap:7px;
   align-items: center;
+}
+.color{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.welcome{
+  /* margin-left: 30rem; */
+  text-align: center;
+  font-family:cursive;
+}
+.error-msg{
+ margin-left: 30rem;
+ 
+}
+.like-button{
+  display: flex;
+  margin-left:5rem;
+  gap:3rem;
 }

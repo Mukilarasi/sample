@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "./App.css";
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link,Redirect } from "react-router-dom";
 import { AddColor } from "./AddColor";
 import { Home } from "./Home";
 import { Sample } from "./Sample";
-
+// import {AddMovie} from "./addmovie";
+import { MovieList } from "./movielist";
+import { ErrorMsg } from "./ErrorMsg";
+import { AddMovie } from "./AddMovie";
 export default function App() {
   let movies = [
     {
@@ -42,10 +43,10 @@ export default function App() {
       summary: "John Durairaj, an alcoholic professor, gets enrolled to teach at a juvenile facility, unbeknownst to him. He soon clashes with a ruthless gangster, who uses the children as scapegoats for his crimes."
     }
   ];
-  const [movie,setMovie]=useState("");
-   const [poster,setPoster]=useState("");
-   const [rating,setRating]=useState("");
-   const [summary,setSummary]=useState("");
+  // const [movie,setMovie]=useState("");
+  //  const [poster,setPoster]=useState("");
+  //  const [rating,setRating]=useState("");
+  //  const [summary,setSummary]=useState("");
    const [movieList,setMovieList]=useState(movies);
  return (
    <div>
@@ -53,14 +54,12 @@ export default function App() {
   <li>
           {/* Change the url bar but dont refresh */}
         <h1> 
-           <Link to="/home">Home</Link>
+           <Link to="/">Home</Link>
         </h1>
-
           </li>
-           
           <li> 
           <h1> 
-            <Link to="/MovieList">MovieList</Link> 
+            <Link to="/films ">MovieList</Link> 
             </h1>
         </li>
         <li>
@@ -68,60 +67,40 @@ export default function App() {
           <Link to="/addcolor">AddColor</Link>
           </h1>
         </li>
+        <li>
+        <h1> 
+          <Link to="/addmovie">AddMovie</Link>
+          </h1>
+        </li>
+        
         </ul>
         <Switch>
 
-<Route path="/Movielist">
-<div className="data">
-    <h1 className="movie">Movie details</h1>
-    <div className="adddata">
-    <TextField value={movie}  label="movie name" onChange={(val)=>setMovie(val.target.value)}/> <br/>
-    <TextField value={poster}   label="poster"  onChange={(val)=>setPoster(val.target.value)}/> <br/>
-     <TextField value={rating}   label="ratings"  onChange={(val)=>setRating(val.target.value)}/> <br/> 
-        <TextField value={summary}  label="summary" onChange={(val)=>setSummary(val.target.value)}/> <br/>
-      
-        <Button variant="contained" onClick={()=>{
-        const newMovie ={
-          movie: movie,
-          poster:poster,
-          rating:rating,
-          summary:summary,
-        };
-         setMovieList([...movieList,newMovie]);
-        }
-      }
-      >
-      Add Movie
-
-        </Button>
-        <br/>
-     
-        </div>
-  {/* <Routing/> */}
-{/* <AddColor/> */}
-  
-       
-      
-    <div className="container">
-      {movieList.map(({ movie, poster, rating, summary }) => (
-        <Sample name={movie} url={poster} star={rating} sum={summary} />
-      ))}
-      {/* <GetData/> */}
-      {/* <Counter/> */}
-    </div>
-
-    </div>
-</Route>
-<Route path="/home">
+{/* <Route path="/Movielist"> */}
+<Route path="/films">
+  <Redirect to ="/movies" />
+  </Route>
+<Route exact path="/">
   <Home />
   </Route>
- 
-<Route path="/addcolor">
+  <Route path="/addcolor">
   <AddColor/>
 </Route>
 
+<Route path='/movies'>
+<MovieList movieList={movieList} setMovieList={setMovieList}/>
+</Route>
+
+<Route path="/addmovie">
+  <AddMovie movieList={movieList} setMovieList={setMovieList}/>
+</Route>
+
+<Route path="**">
+  <ErrorMsg/>
+  </Route>
+
 </Switch>
- 
 </div>
   );
 }
+
