@@ -59,7 +59,7 @@ export default function App() {
           </li>
           <li> 
           <h1> 
-            <Link to="/films ">MovieList</Link> 
+            <Link to="/movies">MovieList</Link> 
             </h1>
         </li>
         <li>
@@ -77,16 +77,16 @@ export default function App() {
         <Switch>
 
 {/* <Route path="/Movielist"> */}
-<Route path="/films">
-  <Redirect to ="/movies" />
-  </Route>
+
 <Route exact path="/">
   <Home />
   </Route>
   <Route path="/addcolor">
   <AddColor/>
 </Route>
-
+<Route path="/films">
+  <Redirect to ="/movies" />
+  </Route>
 <Route path='/movies'>
 <MovieList movieList={movieList} setMovieList={setMovieList}/>
 </Route>
