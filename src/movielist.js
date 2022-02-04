@@ -7,8 +7,6 @@ export function MovieList({ movieList,setMovieList }) {
   <div className="container">
     {movieList.map(({ movie, poster, rating, summary },index) => (
       <Sample name={movie} url={poster} star={rating} sum={summary} 
-    //   <IconButton aria-label="delete">
-    //   <DeleteIcon />
     // {/* <GetData/> */}
     // {/* <Counter/> */}
     deleteButton = {
@@ -20,10 +18,11 @@ export function MovieList({ movieList,setMovieList }) {
         }}
         >
       
+
         {/* </button> */}
         <DeleteIcon />
         </IconButton>
-    }
+    }id={index}
     />
     ))}
   </div> 
